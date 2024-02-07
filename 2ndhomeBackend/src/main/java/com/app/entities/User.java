@@ -7,6 +7,8 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.Table;
 
 import lombok.Getter;
@@ -18,6 +20,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @Getter
 @Setter
+@Inheritance(strategy = InheritanceType.JOINED)
 public class User {
     
 	@Id
@@ -25,7 +28,11 @@ public class User {
 	private Long uid;
 	
 	@Column(name="name")
-	private String name;
+	private String firstName;
+	
+	@Column(name="name")
+	private String lastName;
+	
 	
 	@Column(name="email")
 	private String email;
@@ -40,29 +47,26 @@ public class User {
 	@Column(length=30)
 	private Role role;
 
-
-	
-	
-	
-	@Override
-	public String toString() {
-		return "User [name=" + name + ", email=" + email + ", password=" + password + ", gender=" + gender + ", role="
-				+ role + "]";
-	}
-
-
-
-
-
-	public User(String name, String email, String password, String gender, Role role) {
+	public User(String firstName, String lastName, String email, String password, String gender, Role role) {
 		super();
-		
-		this.name = name;
+		this.firstName = firstName;
+		this.lastName = lastName;
 		this.email = email;
 		this.password = password;
 		this.gender = gender;
 		this.role = role;
 	}
+
+	@Override
+	public String toString() {
+		return "User [firstName=" + firstName + ", lastName=" + lastName + ", email=" + email + ", password=" + password
+				+ ", gender=" + gender + ", role=" + role + "]";
+	}
+
+
+	
+	
+	
 
 
 }

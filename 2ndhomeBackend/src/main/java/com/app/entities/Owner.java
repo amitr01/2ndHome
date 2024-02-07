@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -30,9 +31,9 @@ public class Owner extends User {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long oid;
 	
-	@Column(name="aadhar_no",length = 12,unique = true)
-	private String aadharNumber;
-	
+//	@Column(name="aadhar_no",length = 12,unique = true)
+//	private String aadharNumber;
+//	
 	@Column(name="mob_no",length = 10)
 	private String mobNumber;
 	
@@ -45,15 +46,8 @@ public class Owner extends User {
 	@OneToMany(mappedBy = "owner", cascade = CascadeType.ALL, orphanRemoval = true /* , fetch = FetchType.EAGER */ )
 	private List<Property> properties = new ArrayList<>();
 
-	public Owner(String name, String email, String password, String gender, Role role, String aadharNumber,
-			String mobNumber, String whatsappNumber, LocalDate dob) {
-		super(name, email, password, gender, role);
-		
-		this.aadharNumber = aadharNumber;
-		this.mobNumber = mobNumber;
-		this.whatsappNumber = whatsappNumber;
-		this.dob = dob;
-	}
+	@Embedded//optional
+	private AdharCard card;
 
   //Helper Methods
 	
@@ -66,6 +60,7 @@ public class Owner extends User {
 		properties.remove(p);
 		p.setOwner(null);
 	}
+
 	
 	
 	
