@@ -27,9 +27,7 @@ import lombok.Setter;
 @NoArgsConstructor
 public class Owner extends User {
 	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long oid;
+	
 	
 //	@Column(name="aadhar_no",length = 12,unique = true)
 //	private String aadharNumber;
@@ -59,6 +57,15 @@ public class Owner extends User {
 	public void removeProperty(Property p) {
 		properties.remove(p);
 		p.setOwner(null);
+	}
+
+	public Owner(String firstName, String lastName, String email, String password, String gender, Role role,
+			String mobNumber, String whatsappNumber, LocalDate dob, AdharCard card) {
+		super(firstName, lastName, email, password, gender, role);
+		this.mobNumber = mobNumber;
+		this.whatsappNumber = whatsappNumber;
+		this.dob = dob;
+		this.card = card;
 	}
 
 	

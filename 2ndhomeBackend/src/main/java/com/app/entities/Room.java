@@ -18,12 +18,13 @@ import lombok.Setter;
 @NoArgsConstructor
 public class Room extends BaseEntity{
      
-	
+	@Column(name="NoofBeds")
 	private int noOfBeds;
 	
-	
+	@Column(name="Bathroom")
 	private boolean hasBathroom;
 	
+	@Column(name="Description")
 	private String desc;
 	
 	@ManyToOne(fetch = FetchType.LAZY)

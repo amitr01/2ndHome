@@ -22,9 +22,7 @@ public class AdharCard {
 	private String cardNumber;
 	
 	@Column(length = 30)
-	private String location;
+	private String address;
 	
-	@Column(name = "created_on")
-	private LocalDate createdOn;
 	
 }

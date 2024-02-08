@@ -20,26 +20,29 @@ import lombok.ToString;
 @ToString
 public class PropertyDto {
 
-	private Long id;
+
 	
-
-
 	private String name;
-	
 	
 	private Type type;
 	
-
 	private int noOfBedrooms;
-//	
-//	@Column(name="noOfBathrooms")
-//	private int noOfBathrooms;
-//	
+
 
 	private double rentPrice;
 
-	private Status staus;
+	private Status status;
 	
 	private Long ownerId;
+	
+	
+    private String r1image;
+    
+	
+    private String r2image;
+    
+	
+    private String r3image;
+    
 	
 }

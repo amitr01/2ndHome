@@ -32,7 +32,7 @@ public class Address extends BaseEntity{
 	@Column(length = 10)
 	private String zipCode;
 	
-	//assiosiation mapping with property
+	//association mapping with property
 	//one to one mapping with property
 	
 	@OneToOne(fetch = FetchType.LAZY)

@@ -19,8 +19,7 @@ import lombok.ToString;
 @ToString
 public class UserDto {
 
-	@JsonProperty(access = Access.READ_ONLY)
-	private Long uid;
+    
 	
 	@NotBlank
 	private String firstName;
@@ -39,5 +38,5 @@ public class UserDto {
 	private String gender;
 	
 	
-	private Role role;
+	
 }

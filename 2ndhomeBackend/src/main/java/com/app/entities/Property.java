@@ -43,7 +43,7 @@ public class Property extends BaseEntity{
 	
 	@Enumerated(EnumType.STRING)
 	@Column(name="status")
-	private Status staus;
+	private Status status;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "oid") // Optional BUT reco , to specify the name of FK col.
@@ -52,6 +52,17 @@ public class Property extends BaseEntity{
 	
 	@OneToMany(mappedBy = "property",cascade = CascadeType.ALL,orphanRemoval = true)
 	private List<Room> rooms = new ArrayList<>();
+	
+	@Column(name="room1image")
+    private String r1image;
+    
+	@Column(name="room2image")
+    private String r2image;
+    
+	@Column(name="room3image")
+    private String r3image;
+    
+   
 
 	//helper methods
 	public void addRoom(Room r) {
@@ -64,13 +75,13 @@ public class Property extends BaseEntity{
 		r.setProperty(null);
 	}
 
-	public Property(String name, Type type, int noOfBedrooms, double rentPrice, Status staus) {
+	public Property(String name, Type type, int noOfBedrooms, double rentPrice, Status status) {
 		super();
 		this.name = name;
 		this.type = type;
 		this.noOfBedrooms = noOfBedrooms;
 		this.rentPrice = rentPrice;
-		this.staus = staus;
+		this.status = status;
 	}
 	
 	

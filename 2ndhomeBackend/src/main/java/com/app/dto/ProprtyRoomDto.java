@@ -15,7 +15,7 @@ import lombok.ToString;
 @ToString
 public class ProprtyRoomDto {
 
-	private Long id;
+	
 
 	private String name;
 
@@ -25,7 +25,7 @@ public class ProprtyRoomDto {
 	
 	private double rentPrice;
 
-	private Status staus;
+	private Status status;
 	// additional proprty
-	private List<Room> rooms;
+    private Long pid;
 }

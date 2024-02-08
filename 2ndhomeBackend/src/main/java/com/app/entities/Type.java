@@ -1,5 +1,5 @@
 package com.app.entities;
 
 public enum Type {
-   PG,HOSTEL
+   FURNISHED,SEMIFURNISHED,UNFURNISHED
 }

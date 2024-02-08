@@ -11,9 +11,9 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-public class OwnerDto {
+public class OwnerResponseDto {
 
-	private Long oid;
+
 
 	private String mobNumber;
 

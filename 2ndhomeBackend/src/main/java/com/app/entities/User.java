@@ -20,17 +20,17 @@ import lombok.Setter;
 @NoArgsConstructor
 @Getter
 @Setter
-@Inheritance(strategy = InheritanceType.JOINED)
+@Inheritance(strategy=InheritanceType.JOINED)
 public class User {
     
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long uid;
 	
-	@Column(name="name")
+	@Column(name="firstname")
 	private String firstName;
 	
-	@Column(name="name")
+	@Column(name="lastname")
 	private String lastName;
 	
 	
