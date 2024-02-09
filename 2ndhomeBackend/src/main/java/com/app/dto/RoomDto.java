@@ -21,5 +21,7 @@ public class RoomDto {
 
 	private String desc;
 	
+	private Long pId;
+	
 
 }
