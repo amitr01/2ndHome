@@ -6,7 +6,9 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -32,10 +34,22 @@ public class UserController {
 		return ResponseEntity.status(HttpStatus.CREATED).body(userService.addNewUser(dto));
 	}
 	
-//	@GetMapping("/getUser")
-//	public ResponseEntity<?> getUserDetails(){
-//		
-//	}
+	@GetMapping("/getUser/{email}")
+	public ResponseEntity<?> getUserDetails(@PathVariable String email){
+		System.out.println("in getuser controller...");
+		return ResponseEntity.ok(userService.getUserByEmail(email));
+	}
 	
+	@DeleteMapping("/deleteUser/{email}")
+	public ResponseEntity<?>deleteUserDetails(@PathVariable String email,String pass){
+		System.out.println("in delete user in user controller");
+		return ResponseEntity.ok(userService.deleteUserDetails(email,pass));
+	}
 	
+	//view all property
+	@GetMapping("/getAllProperties")
+	public ResponseEntity<?>getAllProperties(){
+		System.out.println("in get ALL properties...!!");
+		return ResponseEntity.ok(userService.getAllProperties());
+	}
 }
