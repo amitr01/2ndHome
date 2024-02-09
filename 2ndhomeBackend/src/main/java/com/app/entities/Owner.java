@@ -60,12 +60,12 @@ public class Owner extends User {
 	}
 
 	public Owner(String firstName, String lastName, String email, String password, String gender, Role role,
-			String mobNumber, String whatsappNumber, LocalDate dob, AdharCard card) {
+			String mobNumber, String whatsappNumber, LocalDate dob,AdharCard card) {
 		super(firstName, lastName, email, password, gender, role);
 		this.mobNumber = mobNumber;
 		this.whatsappNumber = whatsappNumber;
 		this.dob = dob;
-		this.card = card;
+		this.card=card;
 	}
 
 	

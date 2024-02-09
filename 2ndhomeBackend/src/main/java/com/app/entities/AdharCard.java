@@ -13,10 +13,11 @@ import lombok.Setter;
 
 @Embeddable
 @NoArgsConstructor
-@AllArgsConstructor
+
 @Getter
 @Setter
 public class AdharCard {
+	
 	
 	@Column(name = "card_number",length = 12,unique = true)
 	private String cardNumber;
@@ -24,5 +25,9 @@ public class AdharCard {
 	@Column(length = 30)
 	private String address;
 	
+	public AdharCard(String cardNumber ,String address) {
+		this.address=address;
+		this.cardNumber=cardNumber;
+	}
 	
 }
