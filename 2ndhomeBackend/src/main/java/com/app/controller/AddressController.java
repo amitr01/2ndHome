@@ -6,7 +6,6 @@ import javax.validation.constraints.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -22,16 +21,14 @@ import io.swagger.v3.oas.annotations.Operation;
 
 @RestController
 @RequestMapping("/property/{pid}/address")
-@Validated
+
 public class AddressController {
 
 	
 	@Autowired
 	private AddressService addrService;
 	
-	public AddressController() {
-		System.out.println("in address controller");
-	}
+	
 	
 	//assign address to property
 	@PostMapping
