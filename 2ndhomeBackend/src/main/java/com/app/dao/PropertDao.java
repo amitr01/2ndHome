@@ -6,4 +6,6 @@ import com.app.entities.Property;
 
 public interface PropertDao extends JpaRepository<Property, Long> {
   Property findPropertyByName(String name);
+
+
 }

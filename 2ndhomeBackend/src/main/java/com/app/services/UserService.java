@@ -5,7 +5,7 @@ import java.util.List;
 import javax.validation.Valid;
 
 import com.app.dto.ApiResponse;
-import com.app.dto.ProprtyRoomDto;
+import com.app.dto.PropertyDto;
 import com.app.dto.UserDto;
 
 public interface UserService {
@@ -18,7 +18,9 @@ public interface UserService {
 
 	ApiResponse deleteUserDetails(String email, String pass);
 
-	List<ProprtyRoomDto> getAllProperties();
+	List<PropertyDto> getAllProperties();
+
+	List<PropertyDto> getAllPropertiesByCity(String city);
    
 	
 

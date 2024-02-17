@@ -1,8 +1,5 @@
 package com.app.dto;
 
-import java.util.List;
-
-import com.app.entities.Room;
 import com.app.entities.Status;
 import com.app.entities.Type;
 

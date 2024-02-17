@@ -46,10 +46,18 @@ public class UserController {
 		return ResponseEntity.ok(userService.deleteUserDetails(email,pass));
 	}
 	
+	
 	//view all property
 	@GetMapping("/getAllProperties")
 	public ResponseEntity<?>getAllProperties(){
 		System.out.println("in get ALL properties...!!");
 		return ResponseEntity.ok(userService.getAllProperties());
+	}
+	
+	//view all property by addresss
+	@GetMapping("/getAllProperties/{city}")
+	public ResponseEntity<?> getAllPropertiesByCity(@PathVariable String city){
+		System.out.println("in get All property..");
+		return ResponseEntity.ok(userService.getAllPropertiesByCity(city));
 	}
 }
