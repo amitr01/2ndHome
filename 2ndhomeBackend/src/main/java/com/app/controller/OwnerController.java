@@ -6,6 +6,9 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -59,4 +62,21 @@ public class OwnerController {
 		
 	}
 	
+	@GetMapping("/listProperty")
+	public ResponseEntity<?> getAllProperties(){
+		System.out.println("In Get All Properties Method");
+		return ResponseEntity.ok(propertyService.getAllProperty());
+	}
+	
+	@GetMapping("/listProperty{email}")
+	public ResponseEntity<?> getPropertyByOwnerEmail(@PathVariable String email){
+	System.out.println("In Get Property By Owner Email");
+	return ResponseEntity.ok(propertyService.getPropertyByEmail(email));
+	}
+	
+	@DeleteMapping("/deleteProperty/{name}")
+	public ResponseEntity<?> deletePropertyByName(@PathVariable String name){
+		System.out.println("In Delete Property By Name");
+		return ResponseEntity.ok(ownerService.deletePropertyByName(name));
+	}
 }

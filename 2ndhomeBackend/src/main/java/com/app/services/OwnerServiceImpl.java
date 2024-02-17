@@ -8,13 +8,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.app.dao.OwnerDao;
+import com.app.dao.PropertDao;
 import com.app.dao.UserDao;
-import com.app.dto.AddressDTO;
+import com.app.dto.ApiResponse;
 import com.app.dto.OwnerRequestDto;
-import com.app.dto.PropertyDto;
-import com.app.entities.Address;
 import com.app.entities.AdharCard;
 import com.app.entities.Owner;
+import com.app.entities.Property;
 import com.app.entities.Role;
 
 @Service
@@ -26,6 +26,9 @@ public class OwnerServiceImpl implements OwnerService{
 	
 	@Autowired
 	private UserDao userDao;
+	
+	@Autowired
+	private PropertDao propertyDao;
 	
 	@Autowired
 	private ModelMapper mapper;
@@ -44,6 +47,17 @@ public class OwnerServiceImpl implements OwnerService{
 	    o.setRole(Role.OWNER);
 	  
 		return mapper.map(ownerDao.save(o), OwnerRequestDto.class);
+	}
+
+
+
+	@Override
+	public ApiResponse deletePropertyByName(String name) {
+		Property p=propertyDao.findPropertyByName(name);
+		Owner o=ownerDao.findById(p.getOwner().getUid()).orElseThrow();
+		o.removeProperty(p);
+		propertyDao.delete(p);
+		return new ApiResponse("Property Deleted Successfully");
 	}
 
 

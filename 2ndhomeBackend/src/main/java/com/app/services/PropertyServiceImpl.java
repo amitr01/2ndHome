@@ -1,5 +1,10 @@
 package com.app.services;
 
+import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
+import java.util.stream.Collectors;
+
 import javax.transaction.Transactional;
 import javax.validation.Valid;
 
@@ -35,6 +40,19 @@ public class PropertyServiceImpl implements PropertyService {
 		
 		
 		return mapper.map(propertyDao.save(p), PropertyDto.class);
+	}
+
+	@Override
+	public List<PropertyDto> getAllProperty() {
+		return propertyDao.findAll().stream().map(prop->mapper.map(prop, PropertyDto.class)).collect(Collectors.toList());
+	}
+
+	@Override
+	public List<PropertyDto> getPropertyByEmail(String email) {
+		// TODO Auto-generated method stub
+		Owner o=ownerDao.findOwnerByEmail(email);
+		return o.getProperties().stream().map(prop->mapper.map(prop, PropertyDto.class)).
+				collect(Collectors.toList());
 	}
 	
 
