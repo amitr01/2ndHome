@@ -15,8 +15,11 @@ import org.springframework.stereotype.Service;
 import com.app.dao.OwnerDao;
 import com.app.dao.PropertDao;
 import com.app.dto.PropertyDto;
+import com.app.dto.ProprtyRoomDto;
 import com.app.entities.Owner;
 import com.app.entities.Property;
+
+import ch.qos.logback.core.subst.Token.Type;
 
 @Service
 @Transactional
@@ -52,6 +55,13 @@ public class PropertyServiceImpl implements PropertyService {
 		// TODO Auto-generated method stub
 		Owner o=ownerDao.findOwnerByEmail(email);
 		return o.getProperties().stream().map(prop->mapper.map(prop, PropertyDto.class)).
+				collect(Collectors.toList());
+	}
+
+	@Override
+	public List<PropertyDto> getProprtyType(Type type) {
+		
+		return propertyDao.findByType(type).stream().map(prop->mapper.map(prop, PropertyDto.class)).
 				collect(Collectors.toList());
 	}
 	

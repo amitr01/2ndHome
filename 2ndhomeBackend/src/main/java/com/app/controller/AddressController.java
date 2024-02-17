@@ -35,7 +35,7 @@ public class AddressController {
 	
 	//assign address to property
 	@PostMapping
-	@Operation(summary = "Assign Employe Address")
+	@Operation(summary = "Assign property Address")
 	public ResponseEntity<?> assignPropertyAddress(@PathVariable @NotNull Long pid,
 			@RequestBody @Valid AddressDTO address){
 		
@@ -45,7 +45,7 @@ public class AddressController {
 	
 	//get property Address
 	@GetMapping
-	@Operation(summary = "Get Employee Addess")
+	@Operation(summary = "Get propertyt Addess")
 	public ResponseEntity<?>getPropAddress(@PathVariable Long pid){
 		System.out.println("in get address.");
 	

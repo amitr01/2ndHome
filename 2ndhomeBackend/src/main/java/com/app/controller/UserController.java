@@ -15,7 +15,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.app.dto.UserDto;
+import com.app.services.PropertyService;
 import com.app.services.UserService;
+
+import ch.qos.logback.core.subst.Token.Type;
 
 @RestController
 @RequestMapping("user")
@@ -23,6 +26,9 @@ public class UserController {
       
 	@Autowired
 	private UserService userService;
+	
+	@Autowired
+	private PropertyService propService;
 	
 	@Autowired
 	private ModelMapper mapper;
@@ -52,4 +58,12 @@ public class UserController {
 		System.out.println("in get ALL properties...!!");
 		return ResponseEntity.ok(userService.getAllProperties());
 	}
+	
+	//get properties by type
+	@GetMapping("/getAllProperties/{type}")
+	public ResponseEntity<?>getPropertyByType(@PathVariable Type type){
+		System.out.println("in getProperty by type");
+		return ResponseEntity.ok(propService.getProprtyType(type));
+	}
+	
 }
