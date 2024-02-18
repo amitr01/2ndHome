@@ -1,26 +1,19 @@
 package com.app.dto;
 
-import javax.persistence.Column;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.FetchType;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-
-import com.app.entities.Owner;
 import com.app.entities.Status;
 import com.app.entities.Type;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonProperty.Access;
 
 import lombok.Getter;
 import lombok.Setter;
-import lombok.ToString;
 
 @Getter
 @Setter
-@ToString
-public class PropertyDto {
-
-
+public class PropertyUpdateDto {
+  
+@JsonProperty(access=Access.READ_ONLY)
+   private Long id;
 	
 	private String name;
 	
@@ -33,8 +26,7 @@ public class PropertyDto {
 
 	private Status status;
 	
-	private Long ownerId;
-	
+
 	
     private String r1image;
     
@@ -44,7 +36,6 @@ public class PropertyDto {
 	
     private String r3image;
     
+    private Long propertyId;
     
-    
-	
 }

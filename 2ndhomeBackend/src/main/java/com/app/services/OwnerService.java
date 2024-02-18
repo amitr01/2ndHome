@@ -14,6 +14,10 @@ public interface OwnerService {
 
 	ApiResponse deletePropertyByName(String name);
 
+	OwnerRequestDto getOwnerDetails(Long oid);
+
+	ApiResponse updateOwner(Long oid, OwnerRequestDto dto);
+
 	
 
 	

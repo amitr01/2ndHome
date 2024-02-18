@@ -9,4 +9,10 @@ public interface RoomService {
 
 	ApiResponse addNewRoom(@Valid RoomDto rdto);
 
+	RoomDto getRoomById(Long rid);
+
+	ApiResponse updateRoom(Long rid, @Valid RoomDto dto);
+
+	ApiResponse deleteRoom(Long rid);
+
 }

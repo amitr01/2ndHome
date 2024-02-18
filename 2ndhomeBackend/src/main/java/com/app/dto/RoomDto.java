@@ -2,6 +2,8 @@ package com.app.dto;
 
 import com.app.entities.Status;
 import com.app.entities.Type;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonProperty.Access;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -12,6 +14,7 @@ import lombok.ToString;
 @ToString
 public class RoomDto {
 
+
 	
     private int noOfBeds;
 	
@@ -21,7 +24,8 @@ public class RoomDto {
 
 	private String desc;
 	
-	private Long pId;
+	
+	private Long propertyId;
 	
 
 }

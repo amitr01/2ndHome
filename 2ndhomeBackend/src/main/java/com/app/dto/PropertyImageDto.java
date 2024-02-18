@@ -1,28 +1,18 @@
 package com.app.dto;
 
-import javax.persistence.Column;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.FetchType;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-
-import com.app.entities.Owner;
 import com.app.entities.Status;
 import com.app.entities.Type;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.Getter;
 import lombok.Setter;
-import lombok.ToString;
 
 @Getter
 @Setter
-@ToString
-public class PropertyDto {
-
+public class PropertyImageDto {
 
 	
-	private String name;
+private String name;
 	
 	private Type type;
 	
@@ -44,7 +34,7 @@ public class PropertyDto {
 	
     private String r3image;
     
-    
-    
-	
+ 
+  
+
 }
