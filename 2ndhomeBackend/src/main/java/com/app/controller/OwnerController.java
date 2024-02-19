@@ -32,7 +32,7 @@ import com.app.services.RoomService;
 
 @RestController
 @RequestMapping("owner")
-//@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = "http://localhost:3000")
 public class OwnerController {
    
 	@Autowired
@@ -164,7 +164,7 @@ public class OwnerController {
   
   //For Updating Owner
   @PutMapping("/updateOwner/{oid}")
-  public ResponseEntity<?> updateOwnerDetails(@PathVariable Long oid,@RequestBody OwnerRequestDto dto){
+  public ResponseEntity<?> updateOwnerDetails(@PathVariable Long oid,@RequestBody @Valid OwnerRequestDto dto){
 	   System.out.println("In Update Owner");
 	   return ResponseEntity.ok(ownerService.updateOwner(oid,dto));
   }
