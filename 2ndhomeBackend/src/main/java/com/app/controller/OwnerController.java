@@ -8,6 +8,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -31,6 +32,7 @@ import com.app.services.RoomService;
 
 @RestController
 @RequestMapping("owner")
+@CrossOrigin(origins = "http://localhost:3000")
 public class OwnerController {
    
 	@Autowired
@@ -60,6 +62,7 @@ public class OwnerController {
 	@PostMapping("/addProperty")
 	public ResponseEntity<?> addNewProperty(@RequestBody @Valid  PropertyDto pdto){
 		System.out.println("In add property Method");
+		System.out.println(pdto);
 		return ResponseEntity.status(HttpStatus.CREATED)
 				.body(propertyService.addNewProperty(pdto));
 	}

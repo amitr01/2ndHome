@@ -1,10 +1,11 @@
 import logo from './logo.svg';
 import './App.css';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import React from 'react';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
-import "./components/LoginPage"
+import LoginPage from './components/LoginPage';
+import AddProperty from './components/AddProperty';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
       <div>
         <Routes>
         <Route path="/login" element={<LoginPage />} />
+        <Route path="/addProperty" element={<AddProperty/>}/>
         </Routes>
       </div>
     </div>
