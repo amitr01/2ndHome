@@ -5,5 +5,7 @@ const addOwner=(ownerdata)=>{
 }
 
 const addProperty=(propertyData)=>{
-    return httpClient.post("owner/addProperty",propertyData);
+    return httpClient.post("/owner/addProperty",propertyData);
 }
+
+export default {addOwner,addProperty};
