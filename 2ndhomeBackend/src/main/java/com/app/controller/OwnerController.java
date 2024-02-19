@@ -32,7 +32,7 @@ import com.app.services.RoomService;
 
 @RestController
 @RequestMapping("owner")
-@CrossOrigin(origins = "http://localhost:3000")
+//@CrossOrigin(origins = "http://localhost:3000")
 public class OwnerController {
    
 	@Autowired
@@ -118,6 +118,10 @@ public class OwnerController {
 		return ResponseEntity.ok(ownerService.deletePropertyByName(name));
 	}
 	
+	@DeleteMapping("/deletePropertyId/{pid}")
+	public ResponseEntity<?> deletePropertyById(@PathVariable Long pid){
+		return ResponseEntity.ok(ownerService.deletePropertyById(pid));
+	}
 	//After Fetched Property we will do the changes and save it 
 	@PutMapping("/updateProperty/{pid}")
 	public ResponseEntity<?> updateProperty(@PathVariable Long pid,@RequestBody @Valid PropertyUpdateDto dto){

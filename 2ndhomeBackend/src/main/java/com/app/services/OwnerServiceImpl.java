@@ -67,7 +67,7 @@ public class OwnerServiceImpl implements OwnerService{
 		propertyDao.delete(p);
 		return new ApiResponse("Property Deleted Successfully");
 	}
-
+  
 
 
 	@Override
@@ -91,6 +91,20 @@ public class OwnerServiceImpl implements OwnerService{
 		   mapper.map(dto, o);
 		   ownerDao.save(o);
 		return new ApiResponse("Saved Owner Details Successfully");
+	}
+
+
+
+	@Override
+	public ApiResponse deletePropertyById(Long pid) {
+		Property p=propertyDao.findById(pid).orElseThrow();
+		Owner o=ownerDao.findById(p.getOwner().getUid()).orElseThrow();
+//		Address a=addressDao.findById(p.getId()).orElseThrow();
+//		
+//		addressDao.delete(a);
+		o.removeProperty(p);
+		propertyDao.delete(p);
+		return new ApiResponse("Property Deleted Successfully");
 	}
 
 

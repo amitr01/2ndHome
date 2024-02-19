@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import '../css/OwnerAddForm.css'; // Import CSS file for styling
+import owner_service from '../services/owner_service';
+import { useNavigate } from 'react-router-dom';
 
 const OwnerAddForm = () => {
   const [formData, setFormData] = useState({
@@ -14,7 +16,7 @@ const OwnerAddForm = () => {
     dob: '',
     adharNumber: '',
   });
-
+const navigate=useNavigate();
   const handleChange = (e) => {
     setFormData({
       ...formData,
@@ -22,8 +24,12 @@ const OwnerAddForm = () => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+  const response=await owner_service.addOwner(formData);
+  if(response.data){
+    navigate("/login")
+  }
     console.log('Form submitted:', formData);
   };
 

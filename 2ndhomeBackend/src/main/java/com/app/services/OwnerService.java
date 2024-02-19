@@ -18,6 +18,8 @@ public interface OwnerService {
 
 	ApiResponse updateOwner(Long oid, OwnerRequestDto dto);
 
+	ApiResponse deletePropertyById(Long pid);
+
 	
 
 	

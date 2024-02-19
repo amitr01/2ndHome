@@ -12,9 +12,9 @@ const AddProperty = () => {
   const [rentPrice,setRentPrice]=useState('')
   const [status,setStatus]=useState('')
   const [ownerId,setOwnerId]=useState('')
-  const [image1,setImage1]=useState('')
-  const [image2,setImage2]=useState('')
-  const [image3,setImage3]=useState('')
+  const [r1Image,setImage1]=useState('')
+  const [r2Image,setImage2]=useState('')
+  const [r3Image,setImage3]=useState('')
 
   const property={
     name,
@@ -23,9 +23,9 @@ const AddProperty = () => {
     rentPrice,
     status,
     ownerId,
-    image1,
-    image2,
-    image3,
+    r1Image,
+    r2Image,
+    r3Image,
   };
 
   const navigate = useNavigate();
@@ -56,16 +56,19 @@ const AddProperty = () => {
   const handleImageChange1 = (event) => {
     const file = event.target.files[0];
     setSelectedImages({ ...selectedImages, image1: file });
+ 
   };
 
   const handleImageChange2 = (event) => {
     const file = event.target.files[0];
     setSelectedImages({ ...selectedImages, image2: file });
+  
   };
 
   const handleImageChange3 = (event) => {
     const file = event.target.files[0];
     setSelectedImages({ ...selectedImages, image3: file });
+ 
   };
 
   const uploadImage1 = async () => {
@@ -73,30 +76,34 @@ const AddProperty = () => {
     imageFormData.append('image', selectedImages.image1);
 
     try {
-      const response = await axios.post('http://localhost:8081/owner/addProperty/r1images', imageFormData, {
+       const response =  await axios.post('http://localhost:8081/owner/addProperty/r1images', imageFormData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
       });
       console.log(response.data)
      setImage1(response.data);
+     console.log(r1Image);
+     console.log(response.data)
     } catch (error) {
       console.error('Error uploading image 1:', error);
     }
   };
 
-  const uploadImage2 = async () => {
+  const uploadImage2 =  async () => {
     const imageFormData = new FormData();
     imageFormData.append('image', selectedImages.image2);
 
     try {
-      const response = await axios.post('http://localhost:8081/owner/addProperty/r2images', imageFormData, {
+     const  response = await  axios.post('http://localhost:8081/owner/addProperty/r2images', imageFormData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
       });
-
+      console.log(response.data)
       setImage2(response.data);
+      console.log(response.data)
+      
     } catch (error) {
       console.error('Error uploading image 2:', error);
     }
@@ -112,7 +119,10 @@ const AddProperty = () => {
           'Content-Type': 'multipart/form-data',
         },
       });
+      console.log(response.data)
       setImage3(response.data);
+      console.log(response.data)
+      
     } catch (error) {
       console.error('Error uploading image 3:', error);
     }
@@ -120,25 +130,35 @@ const AddProperty = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-
-    await Promise.all([uploadImage1(), uploadImage2(), uploadImage3()]);
-
-    // const fullFormData = new FormData();
-    // Object.entries(formData).forEach(([key, value]) => {
-    //   fullFormData.append(key, value);
-    // });
-    // fullFormData.append('imagePaths', JSON.stringify(imagePaths));
-
-   const response= await owner_service
-    .addProperty(property)
-    .then((response) => {
-      console.log('Property added successfully', response.data);
-      navigate('/login');
-    })
-    .catch((error) => {
-      console.log('something went wroing' + error.response);
-    });
+  
+    // Track completion of image uploads
+    let allImagesUploaded = false;
+  
+    await Promise.all([uploadImage1(), uploadImage2(), uploadImage3()])
+      .then(() => {
+        // If all image uploads succeed, set the flag to true
+        allImagesUploaded = true;
+      })
+      .catch((error) => {
+        console.error('Error uploading images:', error);
+      });
+  
+    // Proceed with form submission only if all images have been uploaded
+    if (allImagesUploaded) {
+      // Submit the form
+      const response = await owner_service.addProperty(property)
+        .then((response) => {
+          console.log('Property added successfully', response.data);
+          navigate('/login');
+        })
+        .catch((error) => {
+          console.log('something went wrong' + error.response);
+        });
+    } else {
+      console.log('Error: Not all images were uploaded successfully.');
+    }
   };
+  
 
   return (
     <div className="add-property-container">

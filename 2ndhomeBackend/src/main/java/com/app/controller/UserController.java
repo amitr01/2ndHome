@@ -23,7 +23,7 @@ import ch.qos.logback.core.subst.Token.Type;
 
 @RestController
 @RequestMapping("user")
-@CrossOrigin(origins = "http://localhost:3000")
+//@CrossOrigin(origins = "http://localhost:3000")
 public class UserController {
       
 	@Autowired
