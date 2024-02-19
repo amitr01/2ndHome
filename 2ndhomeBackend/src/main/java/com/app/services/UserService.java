@@ -6,11 +6,15 @@ import javax.validation.Valid;
 
 import com.app.dto.ApiResponse;
 import com.app.dto.PropertyDto;
+import com.app.dto.SignInRequest;
 import com.app.dto.UserDto;
+import com.app.entities.User;
 
 public interface UserService {
 
 	
+
+
 
 	UserDto addNewUser(@Valid UserDto dto);
 
@@ -21,6 +25,8 @@ public interface UserService {
 	List<PropertyDto> getAllProperties();
 
 	List<PropertyDto> getAllPropertiesByCity(String city);
+
+	User userLoginDetails(SignInRequest login);
    
 	
 

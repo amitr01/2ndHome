@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 import '../css/UserAddForm.css'; // Import CSS file for styling
+import '../services/user_service';
+import user_service from '../services/user_service';
+import { useNavigate } from 'react-router-dom';
 
 const UserAddForm = () => {
   const [formData, setFormData] = useState({
@@ -19,8 +22,21 @@ const UserAddForm = () => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const navigate = useNavigate();
+  const handleSubmit =async (e) => {
     e.preventDefault();
+    /*const handleSubmit = async (e) => {
+    e.preventDefault();
+  const response=await owner_service.addOwner(formData);
+  if(response.data){
+    navigate("/login")
+  }
+    console.log('Form submitted:', formData);
+  }; */
+  const response =await  user_service.addUSer(formData);
+  if(response.data){
+   navigate("/login")
+  }
     console.log('Form submitted:', formData);
   };
 

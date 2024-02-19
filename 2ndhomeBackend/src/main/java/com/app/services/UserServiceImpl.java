@@ -18,6 +18,7 @@ import com.app.dao.PropertDao;
 import com.app.dao.UserDao;
 import com.app.dto.ApiResponse;
 import com.app.dto.PropertyDto;
+import com.app.dto.SignInRequest;
 import com.app.dto.UserDto;
 import com.app.entities.Property;
 import com.app.entities.Role;
@@ -100,6 +101,24 @@ public class UserServiceImpl implements UserService {
 		}
 		return finalProperty.stream().map(p->mapper.map(p, PropertyDto.class)).collect(Collectors.toList());
 		
+	}
+
+
+
+	@Override
+	public User userLoginDetails(SignInRequest login) {
+		User user = userDao.findByEmail(login.getEmail()).orElseThrow(()->new ResourceNotFoundException("No User found"));
+		if(user!=null) {
+			
+			if (user.getPassword().equals(login.getPassword())){
+				return user;
+			}
+				return new ApiResponse("Password Dosent match");
+		
+		}else {
+			return new ApiResponse("Invalid Login");
+		}
+		return null;
 	}
 
 }
