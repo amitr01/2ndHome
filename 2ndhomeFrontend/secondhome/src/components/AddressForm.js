@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 import '../css/AddressForm.css'; // Import CSS file for styling
+import user_service from '../services/user_service';
+import owner_service from '../services/owner_service';
+import { Navigate, useNavigate } from 'react-router-dom';
 
 const AddressForm = () => {
   const [formData, setFormData] = useState({
@@ -9,6 +12,7 @@ const AddressForm = () => {
     zipCode: ''
   });
 
+  const navigate = useNavigate();
   const handleChange = (e) => {
     setFormData({
       ...formData,
@@ -16,8 +20,12 @@ const AddressForm = () => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit =async (e) => {
     e.preventDefault();
+    const response = await owner_service.assignAddress(formData);
+    if(response.data){
+      navigate("/owner/:pid/property")
+    }
     console.log('Form submitted:', formData);
   };
 

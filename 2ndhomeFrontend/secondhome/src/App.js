@@ -9,14 +9,12 @@ import UserAddForm from './components/UserAddForm';
 import OwnerAddForm from './components/OwnerAddForm';
 import RoomAddForm from './components/RoomAddForm';
 import AddressForm from './components/AddressForm';
-
-import LoginPage from './components/LoginPage';
 import AddProperty from './components/AddProperty';
 
 
 function App() {
   return (
-    <Router>
+    <BrowserRouter>
     <div>
       <div>
         <Routes>
@@ -32,7 +30,7 @@ function App() {
         </Routes>
       </div>
     </div>
-  </Router>
+  </BrowserRouter>
   );
 }
 

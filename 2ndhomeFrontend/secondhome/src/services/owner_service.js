@@ -8,4 +8,10 @@ const addProperty=(propertyData)=>{
     return httpClient.post("/owner/addProperty",propertyData);
 }
 
-export default {addOwner,addProperty};
+const addRoom=(roomData)=>{
+    return httpClient.post("/owner/addRoom",roomData);
+}
+const assignAddress=(addressData)=>{
+    return httpClient.post("/property/:pid/address")
+}
+export default {addOwner,addProperty,addRoom,assignAddress};
