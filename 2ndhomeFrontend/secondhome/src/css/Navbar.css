@@ -27,7 +27,7 @@
   
   .nav-links li a {
     text-decoration: none; /* Remove underline from links */
-    color: #333; /* Set text color */
+    color: #222; /* Set text color */
     font-size: 1.2rem; /* Adjust font size */
     padding: 10px 20px; /* Add padding to create clickable area */
     border-radius: 8px; /* Add rounded corners */
@@ -36,12 +36,15 @@
   
   .nav-links li a:hover {
     background-color: rgba(0, 0, 0, 0.1); /* Change background color on hover */
+    
   }
   
   .main-screen {
     text-align: center;
-    color: rgb(235, 228, 228);
+  
     margin-top: 80px; /* Add margin to push down the content below the fixed navbar */
+    color: #222; /* Change text color to darker */
+
   }
   
   .main-screen h2 {

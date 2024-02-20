@@ -17,6 +17,15 @@ const LoginPage = () => {
 
 const navigate=useNavigate();
 
+const handleUser=(e)=>{
+  e.preventDefault();
+  navigate("/addUser");
+}
+const handleOwner=(e)=>{
+   e.preventDefault();
+   navigate("/addOwner");
+}
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -73,8 +82,8 @@ const navigate=useNavigate();
         />
       <button onClick={handleSubmit}>Login</button>
       <div className="signup-options">
-        <button onClick={() => console.log('Sign up as user')}>Sign Up as User</button>
-        <button onClick={() => console.log('Sign up as owner')}>Sign Up as Owner</button>
+        <button onClick={handleUser}>Sign Up as User</button>
+        <button onClick={handleOwner}>Sign Up as Owner</button>
       </div>
     </div>
   );
