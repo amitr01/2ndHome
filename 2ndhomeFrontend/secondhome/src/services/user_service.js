@@ -20,4 +20,8 @@ const deleteUser=(email)=>{
     return httpClient.delete(`user/deleteUser/${email}`)
 }
 
-export default {getAll,getAllByType,getAllByCity,addUSer,deleteUser};
+const sendOTP=(email)=>{
+    return httpClient.post("/user/sendOTP",email);
+}
+
+export default {getAll,getAllByType,getAllByCity,addUSer,deleteUser,sendOTP};

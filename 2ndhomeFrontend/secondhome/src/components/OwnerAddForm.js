@@ -2,9 +2,10 @@ import React, { useEffect, useState } from 'react';
 import '../css/OwnerAddForm.css'; // Import CSS file for styling
 import owner_service from '../services/owner_service';
 import { useNavigate, useParams } from 'react-router-dom';
+import ReCAPTCHA from "react-google-recaptcha";
 
 const OwnerAddForm = () => {
-  
+ 
   const [firstName, setFirstname] = useState('');
   const [lastName, setLastname] = useState('');
   const [email, setEmail] = useState('');
@@ -16,6 +17,12 @@ const OwnerAddForm = () => {
   const[dob,setDob]=useState('');
   const[cardNumber,setcardNumber]=useState('');
   const[address,setAddress]=useState('');
+
+  const [captchaToken, setCaptchaToken] = useState('');
+
+  const onCaptchaChange = (token) => {
+    setCaptchaToken(token);
+  };
 
 const navigate=useNavigate();
 const {id}=useParams();
@@ -136,7 +143,12 @@ useEffect(()=>{
           <label>Role:</label>
           <input type="text" name="role" value="Owner" readOnly />
         </div>
+        <ReCAPTCHA
+          sitekey="6LeR5nkpAAAAAGkazqi_n31QX7dX6Mqt6F7cBvPJ"
+          onChange={onCaptchaChange}
+        />
         <button type="submit" className="submit-btn">Submit</button>
+     
       </form>
     </div>
   );

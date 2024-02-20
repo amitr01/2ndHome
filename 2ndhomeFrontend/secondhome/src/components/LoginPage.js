@@ -1,12 +1,55 @@
 import React, { useState } from 'react';
 import "../css/LoginPage.css";
+import authetication from '../services/authetication';
+import { useNavigate } from 'react-router-dom';
+import ReCAPTCHA from "react-google-recaptcha";
+import axios from 'axios';
 const LoginPage = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleLogin = () => {
-    // Implement login logic
-    console.log('Logging in with:', email, password);
+  const [captchaToken, setCaptchaToken] = useState('');
+
+  const onCaptchaChange = (token) => {
+    setCaptchaToken(token);
+
+  };
+
+const navigate=useNavigate();
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    if (!captchaToken) {
+      alert("Please complete the reCAPTCHA challenge.");
+      return;
+    }
+    const singInData={
+         email,
+        password,
+      };
+    try {
+      const response = await axios.post('http://localhost:8081/login/signIn',singInData, {
+      
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        
+        
+        params: new URLSearchParams({
+          'g-recaptcha-response': captchaToken
+        })
+      });
+
+     if(response.data==="VISITOR"){
+       navigate("/");
+     }else{
+      navigate("/addProperty");
+     }
+     // console.log(data);
+    } catch (error) {
+      console.error('Error:', error);
+    }
   };
 
   return (
@@ -24,7 +67,11 @@ const LoginPage = () => {
         value={password}
         onChange={(e) => setPassword(e.target.value)}
       />
-      <button onClick={handleLogin}>Login</button>
+         <ReCAPTCHA
+          sitekey="6LeR5nkpAAAAAGkazqi_n31QX7dX6Mqt6F7cBvPJ"
+          onChange={onCaptchaChange}
+        />
+      <button onClick={handleSubmit}>Login</button>
       <div className="signup-options">
         <button onClick={() => console.log('Sign up as user')}>Sign Up as User</button>
         <button onClick={() => console.log('Sign up as owner')}>Sign Up as Owner</button>

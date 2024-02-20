@@ -12,21 +12,11 @@ const AddProperty = () => {
   const [rentPrice,setRentPrice]=useState('')
   const [status,setStatus]=useState('')
   const [ownerId,setOwnerId]=useState('')
-  const [r1Image,setImage1]=useState('')
+  const [r1Image,setR1Image]=useState('')
   const [r2Image,setImage2]=useState('')
   const [r3Image,setImage3]=useState('')
 
-  const property={
-    name,
-    type,
-    noOfBedrooms,
-    rentPrice,
-    status,
-    ownerId,
-    r1Image,
-    r2Image,
-    r3Image,
-  };
+ 
 
   const navigate = useNavigate();
   const [selectedImages, setSelectedImages] = useState({
@@ -82,7 +72,7 @@ const AddProperty = () => {
         },
       });
       console.log(response.data)
-     setImage1(response.data);
+     setR1Image(response.data);
      console.log(r1Image);
      console.log(response.data)
     } catch (error) {
@@ -135,6 +125,8 @@ const AddProperty = () => {
     let allImagesUploaded = false;
   
     await Promise.all([uploadImage1(), uploadImage2(), uploadImage3()])
+
+
       .then(() => {
         // If all image uploads succeed, set the flag to true
         allImagesUploaded = true;
@@ -142,7 +134,17 @@ const AddProperty = () => {
       .catch((error) => {
         console.error('Error uploading images:', error);
       });
-  
+   const property={
+    name,
+    type,
+    noOfBedrooms,
+    rentPrice,
+    status,
+    ownerId,
+    r1Image,
+    r2Image,
+    r3Image,
+  };
     // Proceed with form submission only if all images have been uploaded
     if (allImagesUploaded) {
       // Submit the form
@@ -231,6 +233,7 @@ const AddProperty = () => {
           <label htmlFor="ownerId">Owner ID:</label>
           <input
             type="text"
+            
             id="ownerId"
             name="ownerId"
             value={ownerId}

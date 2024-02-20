@@ -2,7 +2,9 @@ package com.app.services;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.stream.Collectors;
 
 import javax.transaction.Transactional;
@@ -10,7 +12,12 @@ import javax.validation.Valid;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import com.app.custom_exception.ResourceNotFoundException;
 import com.app.dao.AddressDao;
@@ -20,6 +27,7 @@ import com.app.dto.ApiResponse;
 import com.app.dto.PropertyDto;
 import com.app.dto.SignInRequest;
 import com.app.dto.UserDto;
+import com.app.dto.UserDtoOTP;
 import com.app.entities.Property;
 import com.app.entities.Role;
 import com.app.entities.User;
@@ -40,14 +48,13 @@ public class UserServiceImpl implements UserService {
 	private ModelMapper mapper;
 	
 	
-	
 	@Override
-	public UserDto addNewUser(@Valid UserDto dto) {
+	public ApiResponse addNewUser(@Valid UserDtoOTP dto) {
 		
 		User u=mapper.map(dto, User.class);
 		u.setRole(Role.VISITOR);
-		return mapper.map(userDao.save(u),UserDto.class);
-		
+	    mapper.map(userDao.save(u),UserDto.class);
+		return new ApiResponse("New User Added SuccessFully");
 	}
 
 
@@ -104,21 +111,11 @@ public class UserServiceImpl implements UserService {
 	}
 
 
-
 	@Override
-	public User userLoginDetails(SignInRequest login) {
-		User user = userDao.findByEmail(login.getEmail()).orElseThrow(()->new ResourceNotFoundException("No User found"));
-		if(user!=null) {
-			
-			if (user.getPassword().equals(login.getPassword())){
-				return user;
-			}
-				return new ApiResponse("Password Dosent match");
+	public Role getUserRole(SignInRequest login) {
+		User user = userDao.findByEmailAndPassword(login.getEmail(), login.getPassword()).orElseThrow((()->new ResourceNotFoundException("User Not Found")));
 		
-		}else {
-			return new ApiResponse("Invalid Login");
-		}
-		return null;
+		return user.getRole();
 	}
 
 }
