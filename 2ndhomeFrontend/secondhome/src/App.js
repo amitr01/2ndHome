@@ -11,6 +11,8 @@ import RoomAddForm from './components/RoomAddForm';
 import AddressForm from './components/AddressForm';
 import AddProperty from './components/AddProperty';
 
+import Navbar from './components/Navbar';
+
 
 function App() {
   return (
@@ -18,6 +20,7 @@ function App() {
     <div>
       <div>
         <Routes>
+          <Route path='/' element={<Navbar/>}></Route>
         <Route path="/login" element={<LoginPage />} />
 
         <Route path="/addUser" element={<UserAddForm />} />

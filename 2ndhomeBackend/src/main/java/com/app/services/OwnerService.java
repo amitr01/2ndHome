@@ -6,7 +6,10 @@ import com.app.dto.AddressDTO;
 import com.app.dto.ApiResponse;
 import com.app.dto.OwnerRequestDto;
 import com.app.dto.PropertyDto;
+import com.app.dto.SignInRequest;
+import com.app.dto.UserDto;
 import com.app.entities.AdharCard;
+import com.app.entities.User;
 
 public interface OwnerService {
 
@@ -19,6 +22,9 @@ public interface OwnerService {
 	ApiResponse updateOwner(Long oid, OwnerRequestDto dto);
 
 	ApiResponse deletePropertyById(Long pid);
+	
+	//
+    User authenticateowner(SignInRequest dto);
 
 	
 

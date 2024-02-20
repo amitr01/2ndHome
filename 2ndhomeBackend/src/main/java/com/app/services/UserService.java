@@ -8,7 +8,10 @@ import com.app.dto.ApiResponse;
 import com.app.dto.PropertyDto;
 import com.app.dto.SignInRequest;
 import com.app.dto.UserDto;
+import com.app.entities.Role;
 import com.app.entities.User;
+
+import ch.qos.logback.core.subst.Token.Type;
 
 public interface UserService {
 
@@ -27,6 +30,8 @@ public interface UserService {
 	List<PropertyDto> getAllPropertiesByCity(String city);
 
 	User userLoginDetails(SignInRequest login);
+
+	Role getUserRole(SignInRequest login);
    
 	
 

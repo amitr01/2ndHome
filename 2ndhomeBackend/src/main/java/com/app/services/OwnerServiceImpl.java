@@ -7,17 +7,21 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.app.custom_exception.ResourceNotFoundException;
 import com.app.dao.AddressDao;
 import com.app.dao.OwnerDao;
 import com.app.dao.PropertDao;
 import com.app.dao.UserDao;
 import com.app.dto.ApiResponse;
 import com.app.dto.OwnerRequestDto;
+import com.app.dto.SignInRequest;
+import com.app.dto.UserDto;
 import com.app.entities.Address;
 import com.app.entities.AdharCard;
 import com.app.entities.Owner;
 import com.app.entities.Property;
 import com.app.entities.Role;
+import com.app.entities.User;
 
 @Service
 @Transactional
@@ -109,8 +113,24 @@ public class OwnerServiceImpl implements OwnerService{
 
 
 
+	@Override
+	public User  authenticateowner(SignInRequest login) {
+		User user = ownerDao.findByEmailAndPassword(login.getEmail(),login.getPassword()).orElseThrow(()->new ResourceNotFoundException("No User found"));
+		if(user!=null) {
+			System.out.println(user);
+			if (user.getPassword().equals(login.getPassword())){
+				return user;
+			}
+				return null;
+		
+		}else {
+			return null;
+	}
+
+	}
+
 
 	
 
 
-}
+	}
