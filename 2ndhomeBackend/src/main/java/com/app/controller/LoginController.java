@@ -16,8 +16,13 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.app.dto.ApiResponse;
 import com.app.dto.SignInRequest;
+<<<<<<< HEAD
 import com.app.services.EmailService;
 import com.app.services.ReCaptchaValidationService;
+=======
+import com.app.entities.User;
+import com.app.services.OwnerService;
+>>>>>>> 26c1711e2b6fa6320487a77f755d9f55010ea21e
 import com.app.services.UserService;
 
 @RestController
@@ -28,6 +33,7 @@ public class LoginController {
 	@Autowired
 	UserService userService;
 	
+<<<<<<< HEAD
 
 	
 	
@@ -42,6 +48,20 @@ public class LoginController {
 
 		}
 		return ResponseEntity.ok(new ApiResponse("Please Verify Catcha"));
-	}
+=======
+	@Autowired
+	OwnerService ownerservice;
+//	
+//	@PostMapping("/login")
+//	ResponseEntity<?>userLogin(@RequestBody SignInRequest login){
+//		
+//		User user=ownerservice.authenticateowner(login);
+//		return ResponseEntity.ok((user.getRole()));
+//	}
 
+	@PostMapping("/login")
+	ResponseEntity<?>loginbaseRole(@RequestBody SignInRequest login){
+		return ResponseEntity.ok(userService.getUserRole(login));
+>>>>>>> 26c1711e2b6fa6320487a77f755d9f55010ea21e
+	}
 }

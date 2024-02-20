@@ -32,6 +32,8 @@ import com.app.entities.Property;
 import com.app.entities.Role;
 import com.app.entities.User;
 
+import ch.qos.logback.core.subst.Token.Type;
+
 @Service
 @Transactional
 public class UserServiceImpl implements UserService {
@@ -112,9 +114,34 @@ public class UserServiceImpl implements UserService {
 
 
 	@Override
+<<<<<<< HEAD
 	public Role getUserRole(SignInRequest login) {
 		User user = userDao.findByEmailAndPassword(login.getEmail(), login.getPassword()).orElseThrow((()->new ResourceNotFoundException("User Not Found")));
 		
+=======
+	public User userLoginDetails(SignInRequest login) {
+		User user = userDao.findByEmail(login.getEmail()).orElseThrow(()->new ResourceNotFoundException("No User found"));
+		if(user!=null) {
+			
+			
+			if (user.getPassword().equals(login.getPassword())){
+				return user;
+			}
+				return null;
+		
+		}else {
+			return null;
+		}
+
+	}
+
+
+
+	@Override
+	public Role getUserRole(SignInRequest login) {
+		User user = userDao.findByEmailAndPassword(login.getEmail(), login.getPassword()).orElseThrow((()->new ResourceNotFoundException("User Not Found")));
+		
+>>>>>>> 26c1711e2b6fa6320487a77f755d9f55010ea21e
 		return user.getRole();
 	}
 

@@ -50,7 +50,7 @@ const UserAddForm = () => {
 
   return (
     <div className="user-form-container">
-      <h2>Add User</h2>
+      <h2>Register User</h2>
       <form onSubmit={handleSubmit} className="user-form">
         <div className="form-group">
           <label>First Name:</label>
