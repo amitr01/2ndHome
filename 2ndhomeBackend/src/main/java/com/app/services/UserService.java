@@ -8,10 +8,9 @@ import com.app.dto.ApiResponse;
 import com.app.dto.PropertyDto;
 import com.app.dto.SignInRequest;
 import com.app.dto.UserDto;
-<<<<<<< HEAD
+
 import com.app.dto.UserDtoOTP;
-=======
->>>>>>> 26c1711e2b6fa6320487a77f755d9f55010ea21e
+
 import com.app.entities.Role;
 import com.app.entities.User;
 
@@ -33,11 +32,10 @@ public interface UserService {
 
 	List<PropertyDto> getAllPropertiesByCity(String city);
 
-<<<<<<< HEAD
+
 	//String LoginDetails(SignInRequest login);
-=======
-	User userLoginDetails(SignInRequest login);
->>>>>>> 26c1711e2b6fa6320487a77f755d9f55010ea21e
+
+	//User userLoginDetails(SignInRequest login);
 
 	Role getUserRole(SignInRequest login);
    

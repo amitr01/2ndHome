@@ -2,37 +2,10 @@ import React, { useEffect, useState } from 'react';
 import '../css/OwnerAddForm.css'; // Import CSS file for styling
 import owner_service from '../services/owner_service';
 import { useNavigate, useParams } from 'react-router-dom';
-import ReCAPTCHA from "react-google-recaptcha";
+
 
 const OwnerAddForm = () => {
-<<<<<<< HEAD
- 
-=======
-<<<<<<< HEAD
-  const [formData, setFormData] = useState({
-    firstName: '',
-    lastName: '',
-    email: '',
-    password: '',
-    confirmPassword: '',
-    gender: '',
-    mobNumber: '',
-    whatsappNumber: '',
-    dob: '',
-    adharNumber: '',
-  });
-  const navigate = useNavigate();
-
-  const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
-  };
-=======
-  
->>>>>>> 26c1711e2b6fa6320487a77f755d9f55010ea21e
-  const [firstName, setFirstname] = useState('');
+const [firstName, setFirstname] = useState('');
   const [lastName, setLastname] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -43,26 +16,14 @@ const OwnerAddForm = () => {
   const[dob,setDob]=useState('');
   const[cardNumber,setcardNumber]=useState('');
   const[address,setAddress]=useState('');
->>>>>>> 797955da6e2aa2acf692ea2abf14de62a751c070
 
-  const [captchaToken, setCaptchaToken] = useState('');
 
-  const onCaptchaChange = (token) => {
-    setCaptchaToken(token);
-  };
 
 const navigate=useNavigate();
 const {id}=useParams();
  
   const handleSubmit = async (e) => {
     e.preventDefault();
-<<<<<<< HEAD
-    const response = await owner_service.addOwner(formData);
-    if (response.data) {
-      navigate('/login');
-    }
-    console.log('Form submitted:', formData);
-=======
     const ownerData={
    
       firstName,
@@ -100,7 +61,6 @@ const {id}=useParams();
         console.log('something went wrong'+error.response);
       });
     }
->>>>>>> 797955da6e2aa2acf692ea2abf14de62a751c070
   };
 useEffect(()=>{
   if(id){
@@ -127,71 +87,7 @@ useEffect(()=>{
 
 
   return (
-    
     <div className="owner-form-container">
-<<<<<<< HEAD
-        <div className="register-owner-heading">
-  <h1>Register Owner</h1>
-</div>
-    
-      <div className="column">
-        
-        <form onSubmit={handleSubmit} className="owner-form">
-          <div className="form-group">
-            <label>First Name:</label>
-            <input type="text" name="firstName" value={formData.firstName} onChange={handleChange} required />
-          </div>
-          <div className="form-group">
-            <label>Last Name:</label>
-            <input type="text" name="lastName" value={formData.lastName} onChange={handleChange} required />
-          </div>
-          <div className="form-group">
-            <label>Email:</label>
-            <input type="email" name="email" value={formData.email} onChange={handleChange} required />
-          </div>
-          <div className="form-group">
-            <label>Password:</label>
-            <input type="password" name="password" value={formData.password} onChange={handleChange} required />
-          </div>
-          <div className="form-group">
-            <label>Confirm Password:</label>
-            <input type="password" name="confirmPassword" value={formData.confirmPassword} onChange={handleChange} required />
-          </div>
-        </form>
-      </div>
-      <div className="column">
-       
-        <form onSubmit={handleSubmit} className="owner-form">
-          <div className="form-group">
-            <label>Gender:</label>
-            <input type="text" name="gender" value={formData.gender} onChange={handleChange} required />
-          </div>
-          <div className="form-group">
-            <label>Mobile Number:</label>
-            <input type="text" name="mobNumber" value={formData.mobNumber} onChange={handleChange} required />
-          </div>
-          <div className="form-group">
-            <label>WhatsApp Number:</label>
-            <input type="text" name="whatsappNumber" value={formData.whatsappNumber} onChange={handleChange} required />
-          </div>
-          <div className="form-group">
-            <label>Date of Birth:</label>
-            <input type="date" name="dob" value={formData.dob} onChange={handleChange} required />
-          </div>
-          <div className="form-group">
-            <label>Aadhar Number:</label>
-            <input type="text" name="adharNumber" value={formData.adharNumber} onChange={handleChange} required />
-          </div>
-          <div className="form-group">
-            <label>Role:</label>
-            <input type="text" name="role" value="Owner" readOnly />
-          </div>
-          <button type="submit" className="submit-btn">
-            Submit
-          </button>
-        </form>
-      </div>
-=======
       <h2>Add Owner</h2>
       <form onSubmit={handleSubmit} className="owner-form">
         <div className="form-group">
@@ -242,14 +138,10 @@ useEffect(()=>{
           <label>Role:</label>
           <input type="text" name="role" value="Owner" readOnly />
         </div>
-        <ReCAPTCHA
-          sitekey="6LeR5nkpAAAAAGkazqi_n31QX7dX6Mqt6F7cBvPJ"
-          onChange={onCaptchaChange}
-        />
+     
         <button type="submit" className="submit-btn">Submit</button>
      
       </form>
->>>>>>> 797955da6e2aa2acf692ea2abf14de62a751c070
     </div>
   );
   

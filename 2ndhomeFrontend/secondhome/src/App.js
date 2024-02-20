@@ -21,12 +21,8 @@ function App() {
     <div>
       <div>
         <Routes>
-<<<<<<< HEAD
           <Route path='/' element={<Navbar/>}></Route>
         <Route path="/login" element={<LoginPage />} />
-=======
-        <Route path="/" element={<LoginPage />} />
->>>>>>> 797955da6e2aa2acf692ea2abf14de62a751c070
 
         <Route path="/addUser" element={<UserAddForm />} />
         <Route path="/addOwner" element={<OwnerAddForm />} />
