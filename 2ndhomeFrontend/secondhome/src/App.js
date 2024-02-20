@@ -9,6 +9,7 @@ import UserAddForm from './components/UserAddForm';
 import OwnerAddForm from './components/OwnerAddForm';
 import RoomAddForm from './components/RoomAddForm';
 import AddressForm from './components/AddressForm';
+
 import AddProperty from './components/AddProperty';
 
 import Navbar from './components/Navbar';
@@ -20,11 +21,16 @@ function App() {
     <div>
       <div>
         <Routes>
+<<<<<<< HEAD
           <Route path='/' element={<Navbar/>}></Route>
         <Route path="/login" element={<LoginPage />} />
+=======
+        <Route path="/" element={<LoginPage />} />
+>>>>>>> 797955da6e2aa2acf692ea2abf14de62a751c070
 
         <Route path="/addUser" element={<UserAddForm />} />
         <Route path="/addOwner" element={<OwnerAddForm />} />
+        <Route path="/addOwner/:id" element={<OwnerAddForm/>}/>
         <Route path="/addRoom" element={<RoomAddForm />} />
         <Route path="/property/:pid/address" element={<AddressForm />} />
 

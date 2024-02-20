@@ -21,6 +21,7 @@ public class OwnerRequestDto {
 //	Owner(String firstName, String lastName, String email, String password, 
 //			String gender, Role role,
 //			String mobNumber, String whatsappNumber, LocalDate dob, AdharCard card)
+   
 	
 	private String firstName;
 	

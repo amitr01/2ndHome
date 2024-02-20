@@ -82,6 +82,7 @@ public class OwnerServiceImpl implements OwnerService{
 		OwnerRequestDto ownerDto= mapper.map(o, OwnerRequestDto.class);
 		
 		ownerDto.setCardNumber(o.getCard().getCardNumber());
+		
 		ownerDto.setAddress(o.getCard().getAddress());
 		return ownerDto;
 	}
@@ -92,7 +93,9 @@ public class OwnerServiceImpl implements OwnerService{
 	@Override
 	public ApiResponse updateOwner(Long oid, OwnerRequestDto dto) {
 		   Owner o=ownerDao.findById(oid).orElseThrow();
+		   System.out.println(dto);
 		   mapper.map(dto, o);
+		   o.setCard(new AdharCard(dto.getCardNumber(),dto.getAddress()));
 		   ownerDao.save(o);
 		return new ApiResponse("Saved Owner Details Successfully");
 	}
