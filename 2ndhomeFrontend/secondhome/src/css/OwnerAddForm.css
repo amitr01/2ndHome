@@ -1,12 +1,10 @@
 .owner-form-container {
   max-width: 80%; /* Adjust the max-width to make the form wider */
-  margin: 0 auto; /* Center the form horizontally */
+  margin: 100px auto; /* Center the form horizontally and provide top margin */
   padding: 20px;
   border: 1px solid #ccc;
   border-radius: 8px;
   background-color: rgba(249, 249, 249, 0.8);
-  display: flex;
-  justify-content: space-between;
 }
 
 /* Wrap each column in a div to apply separate styles */

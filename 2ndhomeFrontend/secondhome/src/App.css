@@ -1,7 +1,7 @@
 
-body {
-  background-image: url('./images/OverAllBackground.jpg'); /* Add path to your background image */
-  background-size: cover;
+/* body {
+/* background-image: url('./images/OverAllBackground.jpg'); Add path to your background image */
+  /* background-size: cover;
   background-position: center;
   margin: 0;
   padding: 0;
@@ -12,13 +12,12 @@ body {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   height: 100vh; /* Adjust as needed */
-  display: flex;
+  /* display: flex;
   align-items: center;
-  justify-content: center;
-}
+  /* justify-content: center;  */
 
 .App {
-  text-align: center;
+  text-align:left;
 }
 
 .App-logo {

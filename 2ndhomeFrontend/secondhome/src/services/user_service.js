@@ -24,4 +24,8 @@ const sendOTP=(email)=>{
     return httpClient.post("/user/sendOTP",email);
 }
 
-export default {getAll,getAllByType,getAllByCity,addUSer,deleteUser,sendOTP};
+const getPropertyDetailsById=(id)=>{
+    return httpClient.get(`user/getAllPropertiesById/${id}`)
+}
+
+export default {getAll,getAllByType,getAllByCity,addUSer,deleteUser,sendOTP,getPropertyDetailsById};

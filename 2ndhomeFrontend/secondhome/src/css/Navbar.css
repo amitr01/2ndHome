@@ -1,5 +1,5 @@
 /* Navbar.css */
-
+/* 
 .navbar-container {
     max-width: 1200px;
     width: 100%;
@@ -8,11 +8,12 @@
     justify-content: space-between;
     align-items: center;
     position: fixed; /* Position the navbar fixed at the top */
-    top: 0; /* Align the navbar to the top of the viewport */
-    background-color: transparent; /* Set the background color to transparent */
-    z-index: 1000; /* Set a high z-index to ensure the navbar is always on top */
-    opacity: 0.8; /* Set the opacity to 80% */
-  }
+    /* top: 0; /* Align the navbar to the top of the viewport */
+    /* background-color: transparent; /* Set the background color to transparent */
+    /* z-index: 1000; /* Set a high z-index to ensure the navbar is always on top */
+  
+    /* margin-bottom: 80px; */  
+  /* } */ 
   
   .nav-links {
     list-style: none;
@@ -40,10 +41,16 @@
   }
   
   .main-screen {
+    background-image: "../images/BackGround.jpg";
     text-align: center;
   
-    margin-top: 80px; /* Add margin to push down the content below the fixed navbar */
+    margin-top: 40px; /* Add margin to push down the content below the fixed navbar */
     color: #222; /* Change text color to darker */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; 
 
   }
   

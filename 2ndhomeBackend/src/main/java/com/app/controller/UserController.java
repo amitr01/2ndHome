@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.app.dto.SendRequestOTP;
 import com.app.dto.UserDtoOTP;
+import com.app.services.AuthenticationService;
 import com.app.services.EmailService;
 import com.app.services.PropertyService;
 import com.app.services.UserService;
@@ -43,6 +44,9 @@ public class UserController {
 	
 	@Autowired
 	private EmailService emailService;
+	
+	@Autowired
+	private AuthenticationService authService;
 	
 	@Value("${spring.mail.username}")
     private String mailUsername;
@@ -84,7 +88,7 @@ public class UserController {
 			if(dto.getOtp().equals(storedOtp)) {
 				System.out.println("Otp Matched");
 				otpMap.remove(dto.getEmail());
-				return ResponseEntity.ok(userService.addNewUser(dto));
+				return ResponseEntity.ok(authService.registerUser(dto));
 			}
 		}
 	   return ResponseEntity.noContent().build();
@@ -125,5 +129,11 @@ public class UserController {
 		System.out.println("in get All property..");
 		return ResponseEntity.ok(userService.getAllPropertiesByCity(city));
 	}
-
+    
+	
+	@GetMapping("/getAllPropertiesById/{id}")
+	public ResponseEntity<?> getAllPropertiesById(@PathVariable Long id){
+		System.out.println("In Get Property By ID");
+		return ResponseEntity.ok(userService.getAllPropertiesById(id));
+	}
 }

@@ -13,27 +13,32 @@ import AddressForm from './components/AddressForm';
 import AddProperty from './components/AddProperty';
 
 import Navbar from './components/Navbar';
-
+import PropertyList from './components/PropertyList';
+import MainPage from './components/MainPage';
+import 'bootstrap/dist/css/bootstrap.css'
+import ViewPropertyDetails from './components/ViewPropertyDetails';
 
 function App() {
   return (
     <BrowserRouter>
     <div>
-      <div>
+        <Navbar></Navbar>
         <Routes>
-          <Route path='/' element={<Navbar/>}></Route>
-        <Route path="/login" element={<LoginPage />} />
 
+        <Route path="/" element={<MainPage/>}/>  
+        <Route path="/login" element={<LoginPage />} />
+        <Route path='/propertyList' element={<PropertyList/>}/>
+        <Route path="/showPropertyDetails/:id" element={<ViewPropertyDetails/>}/>
         <Route path="/addUser" element={<UserAddForm />} />
         <Route path="/addOwner" element={<OwnerAddForm />} />
         <Route path="/addOwner/:id" element={<OwnerAddForm/>}/>
         <Route path="/addRoom" element={<RoomAddForm />} />
         <Route path="/property/:pid/address" element={<AddressForm />} />
-
+       
         <Route path="/addProperty" element={<AddProperty/>}/>
 
         </Routes>
-      </div>
+      
     </div>
   </BrowserRouter>
   );

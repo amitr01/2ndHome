@@ -10,7 +10,7 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-public class ProprtyRoomDto {
+public class PropertyRoomDto {
 
 	
 
@@ -23,6 +23,12 @@ public class ProprtyRoomDto {
 	private double rentPrice;
 
 	private Status status;
+	
+	private String description;
 	// additional proprty
-    private Long pid;
+    private String number;
+    
+    private String whatsappNumber;
+    
+    
 }

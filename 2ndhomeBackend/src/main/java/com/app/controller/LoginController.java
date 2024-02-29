@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.app.dto.ApiResponse;
 import com.app.dto.SignInRequest;
-
+import com.app.services.AuthenticationService;
 import com.app.services.EmailService;
 import com.app.services.ReCaptchaValidationService;
 
@@ -39,13 +39,16 @@ public class LoginController {
 	OwnerService ownerservice;
 	
 	@Autowired
+	private AuthenticationService authService;
+	
+	@Autowired
 	private ReCaptchaValidationService validator;
 	
 	@PostMapping("/signIn")
 	ResponseEntity<?> Login(@RequestBody SignInRequest login,@RequestParam(name="g-recaptcha-response")
 	 String captcha){
 		if(validator.validateCaptcha(captcha)) {
-			return ResponseEntity.ok(userService.getUserRole(login));
+			return ResponseEntity.ok(authService.authenticate(login));
 
 		}
 		return ResponseEntity.ok(new ApiResponse("Please Verify Catcha"));
@@ -59,9 +62,9 @@ public class LoginController {
 //		return ResponseEntity.ok((user.getRole()));
 //	}
 
-	@PostMapping("/login")
-	ResponseEntity<?>loginbaseRole(@RequestBody SignInRequest login){
-		return ResponseEntity.ok(userService.getUserRole(login));
-
-	}
+//	@PostMapping("/login")
+//	ResponseEntity<?>loginbaseRole(@RequestBody SignInRequest login){
+//		return ResponseEntity.ok(userService.getUserRole(login));
+//
+//	}
 }

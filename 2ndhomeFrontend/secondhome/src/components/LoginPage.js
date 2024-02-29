@@ -49,12 +49,11 @@ const handleOwner=(e)=>{
           'g-recaptcha-response': captchaToken
         })
       });
-
-     if(response.data==="VISITOR"){
-       navigate("/");
-     }else{
-      navigate("/addProperty");
-     }
+      const token = response.data.token; // Assuming the token is returned in the response
+      console.log(response.data.token);
+      localStorage.setItem('token', token);
+      navigate("/propertyList")
+  
      // console.log(data);
     } catch (error) {
       console.error('Error:', error);
@@ -62,6 +61,7 @@ const handleOwner=(e)=>{
   };
 
   return (
+    <div className='login-form-container'>
     <div className="login-form">
       <h2>Login</h2>
       <input
@@ -85,6 +85,7 @@ const handleOwner=(e)=>{
         <button onClick={handleUser}>Sign Up as User</button>
         <button onClick={handleOwner}>Sign Up as Owner</button>
       </div>
+    </div>
     </div>
   );
 };

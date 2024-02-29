@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import axios from 'axios';
+import axios from '../axiosconfig';
 import owner_service from '../services/owner_service'
 import { Navigate } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';

@@ -6,6 +6,7 @@ import javax.validation.Valid;
 
 import com.app.dto.ApiResponse;
 import com.app.dto.PropertyDto;
+import com.app.dto.PropertyRoomDto;
 import com.app.dto.SignInRequest;
 import com.app.dto.UserDto;
 
@@ -38,6 +39,8 @@ public interface UserService {
 	//User userLoginDetails(SignInRequest login);
 
 	Role getUserRole(SignInRequest login);
+
+	PropertyRoomDto getAllPropertiesById(Long id);
    
 	
 
