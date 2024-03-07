@@ -1,35 +1,32 @@
-/* OwnerAddForm.css */
-
 .owner-form-container {
-  max-width: 800px; /* Increase the max-width to accommodate two columns */
-  margin: 0 auto;
+  max-width: 80%; /* Adjust the max-width to make the form wider */
+  margin: 100px auto; /* Center the form horizontally and provide top margin */
   padding: 20px;
   border: 1px solid #ccc;
   border-radius: 8px;
-  background-color: rgba(249, 249, 249, 0.8); /* Add a faded effect */
-  display: flex; /* Use flexbox */
-  justify-content: space-between; /* Space evenly between columns */
+  background-color: rgba(249, 249, 249, 0.8);
 }
 
 /* Wrap each column in a div to apply separate styles */
 .column {
-  flex: 1; /* Equal width for each column */
+  flex: 1;
 }
 
 .owner-form {
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
 }
 
 .form-group {
   margin-bottom: 15px;
-  display: flex;
-  flex-direction: column;
+  flex: 0 0 50%; /* Set each form group to take up 50% of the width */
+  padding-right: 10px;
 }
 
 label {
   font-weight: bold;
   margin-bottom: 5px;
+  flex: 0 0 100%;
 }
 
 input[type="text"],
@@ -44,8 +41,8 @@ input[type="date"] {
 }
 
 .submit-btn {
-  width: 100%;
-  padding: 10px;
+  width: auto; /* Allow submit button to adjust width based on content */
+  padding: 10px 20px;
   background-color: #007bff;
   color: #fff;
   border: none;
@@ -55,17 +52,4 @@ input[type="date"] {
 
 .submit-btn:hover {
   background-color: #0056b3;
-}
-/* OwnerAddForm.css */
-
-.register-owner-heading {
-
-  background-size: cover; /* Adjust the background size as needed */
-  background-position: center; /* Center the background image */
-  color: rgb(80, 48, 207); /* Set text color */
-  text-align: initial; /* Center the text */
-  padding: 50px; /* Add padding as needed */
-  font-family: Georgia, 'Times New Roman', Times, serif;
-  font-style: normal;
-  font-variant: small-caps;
 }

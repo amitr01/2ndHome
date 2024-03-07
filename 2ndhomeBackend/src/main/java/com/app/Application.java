@@ -30,7 +30,12 @@ public class Application {
 			
 			@Override
 			public void addCorsMappings(CorsRegistry reg) {
-				reg.addMapping("/**").allowedOrigins("*");
+				//reg.addMapping("/**").allowedOrigins("*");
+				  reg.addMapping("/**")
+		            .allowedOrigins("http://localhost:3000")
+		            .allowedMethods("GET", "POST", "PUT", "DELETE")
+		            .allowedHeaders("*")
+		            .allowCredentials(true);
 			}
 		};
 	}

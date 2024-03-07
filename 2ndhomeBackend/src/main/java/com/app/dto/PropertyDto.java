@@ -20,7 +20,7 @@ import lombok.ToString;
 @ToString
 public class PropertyDto {
 
-
+     private Long id;
 	
 	private String name;
 	

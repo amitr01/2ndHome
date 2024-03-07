@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import backgroundImage from '../images/OverAllBackground.jpg'; // Import background image
-import '../css/Home.css'; // Import CSS file for component styling
+ // Import CSS file for component styling
 
 const Home = () => {
   const navigate = useNavigate();
@@ -13,11 +13,7 @@ const Home = () => {
 
   return (
     <div
-      className="home-container"
-    //   style={{
-    //     backgroundImage: `url(${backgroundImage})`,
-    //   }}
-    >
+      className="home-container" >
       <div className="content">
         <h1 className="title">Welcome to <span className="highlight">2ndHome</span></h1>
         <p className="subtitle">Find your perfect PG/Hostel accommodation</p>

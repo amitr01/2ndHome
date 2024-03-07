@@ -23,7 +23,7 @@ import com.app.dto.ApiResponse;
 import com.app.dto.PropertyDto;
 import com.app.dto.PropertyImageDto;
 import com.app.dto.PropertyUpdateDto;
-import com.app.dto.ProprtyRoomDto;
+import com.app.dto.PropertyRoomDto;
 import com.app.dto.RoomDto;
 import com.app.entities.Owner;
 import com.app.entities.Property;

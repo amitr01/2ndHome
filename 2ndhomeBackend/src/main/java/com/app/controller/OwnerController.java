@@ -25,6 +25,7 @@ import com.app.dto.OwnerRequestDto;
 import com.app.dto.PropertyDto;
 import com.app.dto.PropertyUpdateDto;
 import com.app.dto.RoomDto;
+import com.app.services.AuthenticationService;
 import com.app.services.ImageHandlingService;
 import com.app.services.OwnerService;
 import com.app.services.PropertyService;
@@ -50,12 +51,15 @@ public class OwnerController {
 	@Autowired
 	private RoomService roomService;
 	
+	@Autowired
+	private AuthenticationService authService;
+	
 	@PostMapping("/addOwner")
 	public ResponseEntity<?> addNewOwner(@RequestBody @Valid OwnerRequestDto dto
 			){
 		System.out.println("In add owner method");
 		return ResponseEntity.status(HttpStatus.CREATED).
-				body(ownerService.addNewOwner(dto));
+				body(authService.registerOwner(dto));
 		
 	}
 	

@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.app.dto.ProprtyRoomDto;
+import com.app.dto.PropertyRoomDto;
 import com.app.entities.Property;
 
 import ch.qos.logback.core.subst.Token.Type;

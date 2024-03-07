@@ -6,8 +6,12 @@ import javax.validation.Valid;
 
 import com.app.dto.ApiResponse;
 import com.app.dto.PropertyDto;
+import com.app.dto.PropertyRoomDto;
 import com.app.dto.SignInRequest;
 import com.app.dto.UserDto;
+
+import com.app.dto.UserDtoOTP;
+
 import com.app.entities.Role;
 import com.app.entities.User;
 
@@ -19,7 +23,7 @@ public interface UserService {
 
 
 
-	UserDto addNewUser(@Valid UserDto dto);
+	ApiResponse addNewUser(@Valid UserDtoOTP dto);
 
 	UserDto getUserByEmail(String name);
 
@@ -29,9 +33,14 @@ public interface UserService {
 
 	List<PropertyDto> getAllPropertiesByCity(String city);
 
-	User userLoginDetails(SignInRequest login);
+
+	//String LoginDetails(SignInRequest login);
+
+	//User userLoginDetails(SignInRequest login);
 
 	Role getUserRole(SignInRequest login);
+
+	PropertyRoomDto getAllPropertiesById(Long id);
    
 	
 

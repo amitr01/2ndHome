@@ -12,6 +12,7 @@ const UserAddForm = () => {
     password: '',
     confirmPassword: '',
     gender: '',
+    otp:'',
     role: 'VISITOR' // Set role to 'VISITOR' by default
   });
 
@@ -23,6 +24,13 @@ const UserAddForm = () => {
   };
 
   const navigate = useNavigate();
+  const handleSendOTP = async () => {
+    // Send email to the user's email address with the OTP
+    // You may call a backend endpoint here to send the OTP to the user's email
+    // For simplicity, let's assume this function sends an OTP to the user's email
+    const response = await user_service.sendOTP(formData.email);
+  
+  };
   const handleSubmit =async (e) => {
     e.preventDefault();
     /*const handleSubmit = async (e) => {
@@ -35,7 +43,7 @@ const UserAddForm = () => {
   }; */
   const response =await  user_service.addUSer(formData);
   if(response.data){
-   navigate("/login")
+   navigate("/")
   }
     console.log('Form submitted:', formData);
   };
@@ -55,6 +63,11 @@ const UserAddForm = () => {
         <div className="form-group">
           <label>Email:</label>
           <input type="email" name="email" value={formData.email} onChange={handleChange} required />
+        </div>
+        <div className="form-group">
+          <label>OTP:</label>
+          <input type="text" name="otp" value={formData.otp} onChange={handleChange} required />
+          <button type="button" onClick={handleSendOTP}>Send OTP</button>
         </div>
         <div className="form-group">
           <label>Password:</label>
