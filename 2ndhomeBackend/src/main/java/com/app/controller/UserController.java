@@ -47,6 +47,8 @@ public class UserController {
 		System.out.println("in getuser controller...");
 		return ResponseEntity.ok(userService.getUserByEmail(email));
 	}
+
+	
 	
 	@DeleteMapping("/deleteUser/{email}")
 	public ResponseEntity<?>deleteUserDetails(@PathVariable String email,String pass){
