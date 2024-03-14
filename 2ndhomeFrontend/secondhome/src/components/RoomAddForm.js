@@ -23,7 +23,7 @@ const RoomAddForm = () => {
     e.preventDefault();
     const response = await owner_service.addRoom(formData);
     if(response.data){
-      navigate("/owner/property/:pid")
+      navigate("/owner/propertyList")
     }
     console.log('Form submitted:', formData);
   };

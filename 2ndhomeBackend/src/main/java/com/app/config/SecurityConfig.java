@@ -41,7 +41,8 @@ public class SecurityConfig {
 						"/user/addUser","/user/getAllProperties","/owner/addOwner","/owner/addProperty"
 						,"/property/**","/v3/api-docs",
 		                "/swagger-ui.html",
-		                "/swagger-ui/**")
+		                "/swagger-ui/**","/owner/addRoom","/owner/ownerDetails/{oid}","/owner/room/{rid}"
+		                ,"/owner/**","/user/getAllPropertiesById/{id}","/user/getAllProperties/{city}","/user/getAllProperties/{type}")
 				.permitAll()
 				.anyRequest()
 				.authenticated()

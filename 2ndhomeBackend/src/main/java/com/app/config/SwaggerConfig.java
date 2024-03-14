@@ -18,8 +18,8 @@ public class SwaggerConfig {
 @Bean
 public OpenAPI springShopOpenAPI() {
 return new OpenAPI()
-.info(new Info().title("Courier Management System Application")
-.description("Courier Management System Application using Spring Boot 3")
+.info(new Info().title("2ndHOME A one Step PG Finding System")
+.description("PG Management System Application using Spring Boot 3")
 .version("v0.0.1")
 .license(new License()
 .name("Apache 2.0")
