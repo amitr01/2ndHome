@@ -21,8 +21,8 @@ const updateOwner=(id,ownerdata)=>{
 const addRoom=(roomData)=>{
     return httpClient.post("/owner/addRoom",roomData);
 }
-const assignAddress=(addressData)=>{
-    return httpClient.post("/property/:pid/address")
+const assignAddress=(addressData,pid)=>{
+    return httpClient.post(`/property/${pid}`,addressData);
 }
 
 export default {addOwner,addProperty ,getOwner,updateOwner,addRoom,assignAddress};

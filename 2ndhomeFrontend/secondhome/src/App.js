@@ -33,7 +33,7 @@ function App() {
         <Route path="/addOwner" element={<OwnerAddForm />} />
         <Route path="/addOwner/:id" element={<OwnerAddForm/>}/>
         <Route path="/addRoom" element={<RoomAddForm />} />
-        <Route path="/property/:pid/address" element={<AddressForm />} />
+        <Route path="/property/:pid" element={<AddressForm />} />
        
         <Route path="/addProperty" element={<AddProperty/>}/>
 

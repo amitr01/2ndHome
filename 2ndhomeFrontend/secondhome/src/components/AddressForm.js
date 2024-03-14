@@ -3,7 +3,7 @@ import '../css/AddressForm.css'; // Import CSS file for styling
 import user_service from '../services/user_service';
 import owner_service from '../services/owner_service';
 import { Navigate, useNavigate } from 'react-router-dom';
-
+import { useParams } from 'react-router-dom';
 const AddressForm = () => {
   const [formData, setFormData] = useState({
     street: '',
@@ -11,7 +11,7 @@ const AddressForm = () => {
     state: '',
     zipCode: ''
   });
-
+const pid=useParams();
   const navigate = useNavigate();
   const handleChange = (e) => {
     setFormData({
@@ -22,9 +22,9 @@ const AddressForm = () => {
 
   const handleSubmit =async (e) => {
     e.preventDefault();
-    const response = await owner_service.assignAddress(formData);
+    const response = await owner_service.assignAddress(formData,pid);
     if(response.data){
-      navigate("/owner/:pid/property")
+      navigate("/propertyList")
     }
     console.log('Form submitted:', formData);
   };

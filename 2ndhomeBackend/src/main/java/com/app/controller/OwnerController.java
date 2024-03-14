@@ -110,7 +110,7 @@ public class OwnerController {
 //		return ResponseEntity.ok(propertyService.getImage(pid));
 //	}
 	
-	@GetMapping("/listProperty{email}")
+	@GetMapping("/listProperty/{email}")
 	public ResponseEntity<?> getPropertyByOwnerEmail(@PathVariable String email){
 	System.out.println("In Get Property By Owner Email");
 	return ResponseEntity.ok(propertyService.getPropertyByEmail(email));

@@ -21,8 +21,8 @@ import com.app.services.AddressService;
 import io.swagger.v3.oas.annotations.Operation;
 
 @RestController
-@RequestMapping("/property/{pid}/address")
-//@CrossOrigin(origins = "http://localhost:3000")
+@RequestMapping("/property")
+@CrossOrigin(origins = "http://localhost:3000")
 public class AddressController {
 
 	
@@ -32,9 +32,9 @@ public class AddressController {
 	
 	
 	//assign address to property
-	@PostMapping
+	@PostMapping("/{pid}")
 	@Operation(summary = "Assign property Address")
-	public ResponseEntity<?> assignPropertyAddress(@PathVariable @NotNull Long pid,
+	public ResponseEntity<?> assignPropertyAddress(@PathVariable Long pid,
 			@RequestBody @Valid AddressDTO address){
 		
 		System.out.println("in assign address.");
@@ -42,7 +42,7 @@ public class AddressController {
 	}
 	
 	//get property Address
-	@GetMapping
+	@GetMapping("/{pid}")
 	@Operation(summary = "Get propertyt Addess")
 	public ResponseEntity<?>getPropAddress(@PathVariable Long pid){
 		System.out.println("in get address.");
@@ -50,7 +50,7 @@ public class AddressController {
 		return ResponseEntity.ok(addrService.getPropertyAddress(pid));
 	}
 	
-	@PutMapping
+	@PutMapping("/{pid}")
 	@Operation(summary = "Complete updation of property address")
 	public ResponseEntity<?> updatePropAddress(@PathVariable @NotNull Long pid,
 			@RequestBody @Valid AddressDTO address) {
